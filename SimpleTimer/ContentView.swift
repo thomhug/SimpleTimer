@@ -43,7 +43,7 @@ struct TimerRow: View {
             Spacer()
 
             Text(section.displayTime)
-                .font(.system(size: 72, weight: .light, design: .monospaced))
+                .font(.system(size: 72, weight: .thin, design: .rounded))
                 .foregroundStyle(section.isRunning ? .primary : .secondary)
                 .contentTransition(.numericText())
                 .onTapGesture {

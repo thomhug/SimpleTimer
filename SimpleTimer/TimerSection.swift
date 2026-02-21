@@ -1,5 +1,5 @@
 import Foundation
-import AudioToolbox
+import AVFoundation
 
 @Observable
 class TimerSection: Identifiable {
@@ -25,7 +25,7 @@ class TimerSection: Identifiable {
         }
         let minutes = total / 60
         let seconds = total % 60
-        return String(format: "%d:%02d", minutes, seconds)
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 
     private var timer: Timer?
@@ -65,8 +65,8 @@ class TimerSection: Identifiable {
             } else {
                 self.remainingSeconds = max(0, startRemaining - elapsed)
                 if self.remainingSeconds <= 0 {
-                    self.stop()
                     self.playBeep()
+                    self.reset()
                 }
             }
         }
@@ -84,7 +84,15 @@ class TimerSection: Identifiable {
         elapsedSeconds = 0
     }
 
+    private static var audioPlayer: AVAudioPlayer?
+
     private func playBeep() {
-        AudioServicesPlaySystemSound(1005)
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        if let url = Bundle.main.url(forResource: "alarm", withExtension: "caf")
+            ?? URL(fileURLWithPath: "/System/Library/Audio/UISounds/alarm.caf") as URL? {
+            Self.audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            Self.audioPlayer?.play()
+        }
     }
 }
