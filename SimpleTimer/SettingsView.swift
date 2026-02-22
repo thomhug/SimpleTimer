@@ -8,9 +8,22 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Timer") {
-                    ForEach(sections) { section in
+                ForEach(sections) { section in
+                    Section("Timer \(section.id + 1)") {
                         TimerConfigRow(section: section)
+
+                        Picker("Ton", selection: Bindable(section).selectedSound) {
+                            ForEach(SoundOption.allCases) { sound in
+                                Text(sound.rawValue).tag(sound)
+                            }
+                        }
+                        .onChange(of: section.selectedSound) {
+                            section.selectedSound.play()
+                        }
+
+                        if !section.isStopwatch {
+                            Toggle("Endlosschleife", isOn: Bindable(section).loopEnabled)
+                        }
                     }
                 }
 
@@ -39,44 +52,50 @@ struct SettingsView: View {
 struct TimerConfigRow: View {
     @Bindable var section: TimerSection
 
-    @State private var minuteText: String = ""
-    @State private var secondText: String = ""
+    @State private var selectedMinutes: Int = 0
+    @State private var selectedSeconds: Int = 0
 
     var body: some View {
-        HStack {
-            Text("Timer \(section.id + 1)")
-            Spacer()
-            HStack(spacing: 2) {
-                TextField("0", text: $minuteText)
-                    .keyboardType(.numberPad)
-                    .frame(width: 30)
-                    .multilineTextAlignment(.trailing)
-                    .onChange(of: minuteText) { updateSeconds() }
-                Text(":")
-                TextField("00", text: $secondText)
-                    .keyboardType(.numberPad)
-                    .frame(width: 30)
-                    .onChange(of: secondText) { updateSeconds() }
+        VStack(alignment: .leading, spacing: 4) {
+            if section.configuredSeconds == 0 {
+                Text("Stoppuhr")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
-            .font(.body.monospaced())
 
-            Text(section.configuredSeconds == 0 ? "Stoppuhr" : "")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .frame(width: 60, alignment: .leading)
+            HStack {
+                Picker("Minuten", selection: $selectedMinutes) {
+                    ForEach(0..<60) { m in
+                        Text("\(m) Min").tag(m)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(maxWidth: .infinity)
+                .frame(height: 100)
+                .clipped()
+
+                Picker("Sekunden", selection: $selectedSeconds) {
+                    ForEach(0..<60) { s in
+                        Text("\(s) Sek").tag(s)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(maxWidth: .infinity)
+                .frame(height: 100)
+                .clipped()
+            }
+            .labelsHidden()
         }
         .onAppear {
-            let m = section.configuredSeconds / 60
-            let s = section.configuredSeconds % 60
-            minuteText = "\(m)"
-            secondText = String(format: "%02d", s)
+            selectedMinutes = section.configuredSeconds / 60
+            selectedSeconds = section.configuredSeconds % 60
         }
+        .onChange(of: selectedMinutes) { updateConfigured() }
+        .onChange(of: selectedSeconds) { updateConfigured() }
     }
 
-    private func updateSeconds() {
-        let m = Int(minuteText) ?? 0
-        let s = min(59, Int(secondText) ?? 0)
-        let total = m * 60 + s
+    private func updateConfigured() {
+        let total = selectedMinutes * 60 + selectedSeconds
         if total != section.configuredSeconds {
             section.configuredSeconds = total
         }

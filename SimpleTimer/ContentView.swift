@@ -7,6 +7,7 @@ struct ContentView: View {
         TimerSection(id: 2)
     ]
     @State private var showSettings = false
+    @State private var showLog = false
 
     var body: some View {
         NavigationStack {
@@ -20,6 +21,13 @@ struct ContentView: View {
                 }
             }
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showLog = true
+                    } label: {
+                        Image(systemName: "list.bullet.clipboard")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showSettings = true
@@ -30,6 +38,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView(sections: sections)
+            }
+            .sheet(isPresented: $showLog) {
+                LogView()
             }
         }
     }
@@ -42,15 +53,24 @@ struct TimerRow: View {
         HStack {
             Spacer()
 
-            Text(section.displayTime)
-                .font(.system(size: 72, weight: .thin, design: .rounded))
-                .foregroundStyle(section.isRunning ? .primary : .secondary)
-                .contentTransition(.numericText())
-                .onTapGesture {
-                    withAnimation {
-                        section.toggle()
+            ZStack(alignment: .topTrailing) {
+                Text(section.displayTime)
+                    .font(.system(size: 72, weight: .thin, design: .rounded))
+                    .foregroundStyle(section.isRunning ? .primary : .secondary)
+                    .contentTransition(.numericText())
+                    .onTapGesture {
+                        withAnimation {
+                            section.toggle()
+                        }
                     }
+
+                if section.loopEnabled && !section.isStopwatch {
+                    Image(systemName: "repeat")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .offset(x: 4, y: -2)
                 }
+            }
 
             Spacer()
 

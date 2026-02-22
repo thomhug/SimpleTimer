@@ -7,12 +7,25 @@ class TimerSection: Identifiable {
     var configuredSeconds: Int {
         didSet {
             UserDefaults.standard.set(configuredSeconds, forKey: "timer_\(id)_seconds")
-            reset()
+            cancelTimer()
+            resetTime()
         }
     }
     var isRunning: Bool = false
     var remainingSeconds: Double = 0
     var elapsedSeconds: Double = 0
+
+    var selectedSound: SoundOption {
+        didSet {
+            UserDefaults.standard.set(selectedSound.rawValue, forKey: "timer_\(id)_sound")
+        }
+    }
+
+    var loopEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(loopEnabled, forKey: "timer_\(id)_loop")
+        }
+    }
 
     var isStopwatch: Bool { configuredSeconds == 0 }
 
@@ -32,8 +45,17 @@ class TimerSection: Identifiable {
 
     init(id: Int) {
         self.id = id
-        self.configuredSeconds = UserDefaults.standard.object(forKey: "timer_\(id)_seconds") as? Int ?? [45, 60, 0][id]
-        self.remainingSeconds = Double(self.configuredSeconds)
+        let saved = UserDefaults.standard.object(forKey: "timer_\(id)_seconds") as? Int ?? [45, 60, 0][id]
+        self.configuredSeconds = saved
+        self.remainingSeconds = Double(saved)
+
+        if let soundName = UserDefaults.standard.string(forKey: "timer_\(id)_sound"),
+           let sound = SoundOption(rawValue: soundName) {
+            self.selectedSound = sound
+        } else {
+            self.selectedSound = .alarm
+        }
+        self.loopEnabled = UserDefaults.standard.bool(forKey: "timer_\(id)_loop")
     }
 
     func toggle() {
@@ -48,10 +70,45 @@ class TimerSection: Identifiable {
         guard !isRunning else { return }
 
         if !isStopwatch && remainingSeconds <= 0 {
-            reset()
+            resetTime()
         }
 
         isRunning = true
+        TimerLog.shared.log(.started, timerID: id)
+        scheduleTimer()
+    }
+
+    func stop() {
+        guard isRunning else { return }
+        isRunning = false
+        cancelTimer()
+        TimerLog.shared.log(.stopped, timerID: id)
+    }
+
+    func reset() {
+        let wasRunning = isRunning
+        if wasRunning {
+            isRunning = false
+            cancelTimer()
+            TimerLog.shared.log(.stopped, timerID: id)
+        }
+        resetTime()
+        TimerLog.shared.log(.reset, timerID: id)
+    }
+
+    // MARK: - Internal helpers
+
+    private func cancelTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    private func resetTime() {
+        remainingSeconds = Double(configuredSeconds)
+        elapsedSeconds = 0
+    }
+
+    private func scheduleTimer() {
         let startDate = Date()
         let startRemaining = remainingSeconds
         let startElapsed = elapsedSeconds
@@ -65,34 +122,26 @@ class TimerSection: Identifiable {
             } else {
                 self.remainingSeconds = max(0, startRemaining - elapsed)
                 if self.remainingSeconds <= 0 {
-                    self.playBeep()
-                    self.reset()
+                    self.timerFinished()
                 }
             }
         }
     }
 
-    func stop() {
-        isRunning = false
-        timer?.invalidate()
-        timer = nil
-    }
+    private func timerFinished() {
+        selectedSound.play()
+        TimerLog.shared.log(.finished, timerID: id)
 
-    func reset() {
-        stop()
-        remainingSeconds = Double(configuredSeconds)
-        elapsedSeconds = 0
-    }
-
-    private static var audioPlayer: AVAudioPlayer?
-
-    private func playBeep() {
-        try? AVAudioSession.sharedInstance().setCategory(.playback)
-        try? AVAudioSession.sharedInstance().setActive(true)
-        if let url = Bundle.main.url(forResource: "alarm", withExtension: "caf")
-            ?? URL(fileURLWithPath: "/System/Library/Audio/UISounds/alarm.caf") as URL? {
-            Self.audioPlayer = try? AVAudioPlayer(contentsOf: url)
-            Self.audioPlayer?.play()
+        if loopEnabled {
+            cancelTimer()
+            resetTime()
+            scheduleTimer()
+        } else {
+            isRunning = false
+            cancelTimer()
+            resetTime()
         }
     }
+
+    static var audioPlayer: AVAudioPlayer?
 }
