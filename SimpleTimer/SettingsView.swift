@@ -35,6 +35,14 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
+
+                Section {
+                    Text("Version \(Bundle.main.appVersionString)")
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.secondary)
+                        .font(.footnote)
+                        .listRowBackground(Color.clear)
+                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
@@ -46,6 +54,14 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+}
+
+extension Bundle {
+    var appVersionString: String {
+        let version = infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        let build = infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        return "\(version) (\(build))"
     }
 }
 
