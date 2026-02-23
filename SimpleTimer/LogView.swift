@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LogView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showDeleteConfirmation = false
     private var log = TimerLog.shared
 
     private static let timeFormatter: DateFormatter = {
@@ -29,7 +30,7 @@ struct LogView: View {
                                     Spacer()
                                     Text(Self.format(entry.seconds))
                                 }
-                                .font(.body.monospaced())
+                                .font(.system(.body, design: .rounded))
                             }
                         }
 
@@ -41,7 +42,7 @@ struct LogView: View {
                                 Text(Self.format(log.totalSeconds))
                                     .fontWeight(.medium)
                             }
-                            .font(.body.monospaced())
+                            .font(.system(.body, design: .rounded))
                         }
                     }
                 }
@@ -52,7 +53,12 @@ struct LogView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     if !log.entries.isEmpty {
                         Button("Löschen", role: .destructive) {
-                            log.clear()
+                            showDeleteConfirmation = true
+                        }
+                        .confirmationDialog("Protokoll löschen?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+                            Button("Löschen", role: .destructive) {
+                                log.clear()
+                            }
                         }
                     }
                 }
