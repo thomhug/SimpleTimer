@@ -27,6 +27,7 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "list.bullet.clipboard")
                     }
+                    .accessibilityIdentifier("log-button")
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -34,6 +35,7 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "gear")
                     }
+                    .accessibilityIdentifier("settings-button")
                 }
             }
             .sheet(isPresented: $showSettings) {
