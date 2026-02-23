@@ -20,16 +20,28 @@ struct LogView: View {
                         description: Text("Timer-Ereignisse erscheinen hier.")
                     )
                 } else {
-                    List(log.entries) { entry in
-                        HStack {
-                            Text(Self.timeFormatter.string(from: entry.timestamp))
+                    List {
+                        Section {
+                            ForEach(log.entries) { entry in
+                                HStack {
+                                    Text(Self.timeFormatter.string(from: entry.timestamp))
+                                        .foregroundStyle(.secondary)
+                                    Spacer()
+                                    Text(Self.format(entry.seconds))
+                                }
                                 .font(.body.monospaced())
-                                .foregroundStyle(.secondary)
-                            Text("Timer \(entry.timerID + 1)")
-                                .fontWeight(.medium)
-                            Spacer()
-                            Text(entry.event.rawValue)
-                                .foregroundStyle(.secondary)
+                            }
+                        }
+
+                        Section {
+                            HStack {
+                                Text("Gesamt")
+                                    .fontWeight(.medium)
+                                Spacer()
+                                Text(Self.format(log.totalSeconds))
+                                    .fontWeight(.medium)
+                            }
+                            .font(.body.monospaced())
                         }
                     }
                 }
@@ -51,5 +63,11 @@ struct LogView: View {
                 }
             }
         }
+    }
+
+    private static func format(_ totalSeconds: Int) -> String {
+        let m = totalSeconds / 60
+        let s = totalSeconds % 60
+        return String(format: "%02d:%02d", m, s)
     }
 }

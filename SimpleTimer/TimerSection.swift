@@ -74,7 +74,6 @@ class TimerSection: Identifiable {
         }
 
         isRunning = true
-        TimerLog.shared.log(.started, timerID: id)
         scheduleTimer()
     }
 
@@ -82,18 +81,18 @@ class TimerSection: Identifiable {
         guard isRunning else { return }
         isRunning = false
         cancelTimer()
-        TimerLog.shared.log(.stopped, timerID: id)
     }
 
     func reset() {
         let wasRunning = isRunning
+        if isStopwatch && elapsedSeconds > 0 {
+            TimerLog.shared.log(seconds: Int(elapsedSeconds))
+        }
         if wasRunning {
             isRunning = false
             cancelTimer()
-            TimerLog.shared.log(.stopped, timerID: id)
         }
         resetTime()
-        TimerLog.shared.log(.reset, timerID: id)
     }
 
     // MARK: - Internal helpers
@@ -130,7 +129,7 @@ class TimerSection: Identifiable {
 
     private func timerFinished() {
         selectedSound.play()
-        TimerLog.shared.log(.finished, timerID: id)
+        TimerLog.shared.log(seconds: configuredSeconds)
 
         if loopEnabled {
             cancelTimer()
