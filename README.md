@@ -40,3 +40,7 @@ open SimpleTimer.xcodeproj
 ```
 
 Build and run on device or simulator.
+
+## Privacy
+
+SimpleTimer+ does not collect, store, or share any personal data. All settings and timer logs are stored locally on your device.
