@@ -4,29 +4,29 @@
 
 <h1 align="center">SimpleTimer</h1>
 
-<p align="center">Minimale Timer-App für iOS mit drei konfigurierbaren Timern.</p>
+<p align="center">Minimal timer app for iOS with three configurable timers.</p>
 
 ---
 
 ## Features
 
-- **3 Timer** — jeweils als Countdown oder Stoppuhr nutzbar
-- **Wheel-Picker** — Minuten und Sekunden bequem per Drehrad einstellen
-- **Wählbarer Alarm-Sound** — 16 iOS-System-Sounds zur Auswahl pro Timer
-- **Endlosschleife** — Timer startet nach Ablauf automatisch neu
-- **Protokoll** — loggt abgelaufene Timer und zurückgesetzte Stoppuhren mit Zeitstempel und Gesamtzeit
-- **Darstellung** — System, Hell oder Dunkel
+- **3 Timers** — each usable as countdown or stopwatch
+- **Wheel Picker** — set minutes and seconds with a spin wheel
+- **Selectable Alarm Sound** — 16 iOS system sounds per timer
+- **Loop Mode** — timer restarts automatically when finished
+- **Log** — records completed timers and reset stopwatches with timestamp and total time
+- **Appearance** — System, Light or Dark
 
-## Bedienung
+## Usage
 
-| Aktion | Geste |
+| Action | Gesture |
 |---|---|
-| Timer starten/stoppen | Auf die Zeit tippen |
-| Timer zurücksetzen | Pfeil-Button rechts |
-| Einstellungen | Zahnrad oben rechts |
-| Protokoll | Listen-Icon oben links |
+| Start/stop timer | Tap the time |
+| Reset timer | Arrow button on the right |
+| Settings | Gear icon top right |
+| Log | List icon top left |
 
-## Anforderungen
+## Requirements
 
 - iOS 17.0+
 - Xcode 15+
@@ -39,4 +39,4 @@ cd SimpleTimer
 open SimpleTimer.xcodeproj
 ```
 
-Auf dem Gerät oder Simulator bauen und starten.
+Build and run on device or simulator.

@@ -12,7 +12,7 @@ struct SettingsView: View {
                     Section("Timer \(section.id + 1)") {
                         TimerConfigRow(section: section)
 
-                        Picker("Ton", selection: Bindable(section).selectedSound) {
+                        Picker("Sound", selection: Bindable(section).selectedSound) {
                             ForEach(SoundOption.allCases) { sound in
                                 Text(sound.rawValue).tag(sound)
                             }
@@ -22,25 +22,25 @@ struct SettingsView: View {
                         }
 
                         if !section.isStopwatch {
-                            Toggle("Endlosschleife", isOn: Bindable(section).loopEnabled)
+                            Toggle("Loop", isOn: Bindable(section).loopEnabled)
                         }
                     }
                 }
 
-                Section("Darstellung") {
-                    Picker("Hintergrund", selection: $appearance) {
+                Section("Appearance") {
+                    Picker("Background", selection: $appearance) {
                         Text("System").tag("system")
-                        Text("Hell").tag("light")
-                        Text("Dunkel").tag("dark")
+                        Text("Light").tag("light")
+                        Text("Dark").tag("dark")
                     }
                     .pickerStyle(.segmented)
                 }
             }
-            .navigationTitle("Einstellungen")
+            .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Fertig") {
+                    Button("Done") {
                         dismiss()
                     }
                 }
@@ -58,15 +58,15 @@ struct TimerConfigRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             if section.configuredSeconds == 0 {
-                Text("Stoppuhr")
+                Text("Stopwatch")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
             HStack {
-                Picker("Minuten", selection: $selectedMinutes) {
+                Picker("Minutes", selection: $selectedMinutes) {
                     ForEach(0..<60) { m in
-                        Text("\(m) Min").tag(m)
+                        Text("\(m) min").tag(m)
                     }
                 }
                 .pickerStyle(.wheel)
@@ -74,9 +74,9 @@ struct TimerConfigRow: View {
                 .frame(height: 100)
                 .clipped()
 
-                Picker("Sekunden", selection: $selectedSeconds) {
+                Picker("Seconds", selection: $selectedSeconds) {
                     ForEach(0..<60) { s in
-                        Text("\(s) Sek").tag(s)
+                        Text("\(s) sec").tag(s)
                     }
                 }
                 .pickerStyle(.wheel)

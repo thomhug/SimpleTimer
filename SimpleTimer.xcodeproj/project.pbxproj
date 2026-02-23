@@ -14,6 +14,7 @@
 		A1B2C3D4E5F60001AABB0003 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60002AABB0003 /* LogView.swift */; };
 		B727C0CB87444A68276C1640 /* TimerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9F8854F9A3DE70755290C /* TimerSection.swift */; };
 		B878A34C8AB0461350C8072C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A07F86FCEDBA80E957B5100 /* Assets.xcassets */; };
+		C1D2E3F4A5B60001DDCC0010 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60002DDCC0010 /* Localizable.xcstrings */; };
 		DCB2139D525B402EAEEE2B14 /* SimpleTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		A1B2C3D4E5F60002AABB0003 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		9A07F86FCEDBA80E957B5100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerApp.swift; sourceTree = "<group>"; };
+		C1D2E3F4A5B60002DDCC0010 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D7B5DF07F5FA722EC839DD58 /* SimpleTimer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SimpleTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,6 +45,7 @@
 			children = (
 				9A07F86FCEDBA80E957B5100 /* Assets.xcassets */,
 				289B8169CF7503DB007563AF /* ContentView.swift */,
+				C1D2E3F4A5B60002DDCC0010 /* Localizable.xcstrings */,
 				A1B2C3D4E5F60002AABB0003 /* LogView.swift */,
 				6A3B93FD2B9B477B268D5211 /* SettingsView.swift */,
 				AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */,
@@ -102,6 +105,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				de,
 				en,
 			);
 			mainGroup = 249483A16AF2E1C72B3F2C84;
@@ -121,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B878A34C8AB0461350C8072C /* Assets.xcassets in Resources */,
+				C1D2E3F4A5B60001DDCC0010 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +276,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97M8QABMLM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SimpleTimer+";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -279,7 +286,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomhug.SimpleTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,6 +301,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97M8QABMLM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SimpleTimer+";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -302,7 +311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomhug.SimpleTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";

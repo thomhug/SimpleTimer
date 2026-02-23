@@ -16,9 +16,9 @@ struct LogView: View {
             Group {
                 if log.entries.isEmpty {
                     ContentUnavailableView(
-                        "Kein Protokoll",
+                        "No Log",
                         systemImage: "list.bullet.clipboard",
-                        description: Text("Timer-Ereignisse erscheinen hier.")
+                        description: Text("Timer events will appear here.")
                     )
                 } else {
                     List {
@@ -36,7 +36,7 @@ struct LogView: View {
 
                         Section {
                             HStack {
-                                Text("Gesamt")
+                                Text("Total")
                                     .fontWeight(.medium)
                                 Spacer()
                                 Text(Self.format(log.totalSeconds))
@@ -47,23 +47,23 @@ struct LogView: View {
                     }
                 }
             }
-            .navigationTitle("Protokoll")
+            .navigationTitle("Log")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     if !log.entries.isEmpty {
-                        Button("Löschen", role: .destructive) {
+                        Button("Delete", role: .destructive) {
                             showDeleteConfirmation = true
                         }
-                        .confirmationDialog("Protokoll löschen?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
-                            Button("Löschen", role: .destructive) {
+                        .confirmationDialog("Delete log?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+                            Button("Delete", role: .destructive) {
                                 log.clear()
                             }
                         }
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Fertig") {
+                    Button("Done") {
                         dismiss()
                     }
                 }
