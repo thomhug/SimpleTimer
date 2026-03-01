@@ -30,6 +30,7 @@ struct LogView: View {
     @State private var showDeleteConfirmation = false
     @State private var selectedRange: TimeRange = .week
     @State private var selectedBar: Date?
+    @State private var csvFileURL: URL?
     private var log = TimerLog.shared
 
     private static let dateTimeFormatter: DateFormatter = {
@@ -191,17 +192,7 @@ struct LogView: View {
         let csv = generateCSV()
         let tmpURL = FileManager.default.temporaryDirectory.appendingPathComponent("SimpleTimer_Log.csv")
         try? csv.write(to: tmpURL, atomically: true, encoding: .utf8)
-
-        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = scene.windows.first,
-              let root = window.rootViewController else { return }
-
-        let activityVC = UIActivityViewController(activityItems: [tmpURL], applicationActivities: nil)
-        if let popover = activityVC.popoverPresentationController {
-            popover.sourceView = window
-            popover.sourceRect = CGRect(x: window.bounds.midX, y: window.bounds.midY, width: 0, height: 0)
-        }
-        root.present(activityVC, animated: true)
+        csvFileURL = tmpURL
     }
 
     // MARK: - Body
@@ -351,6 +342,14 @@ struct LogView: View {
                     log.clear()
                 }
             }
+            .sheet(isPresented: Binding(
+                get: { csvFileURL != nil },
+                set: { if !$0 { csvFileURL = nil } }
+            )) {
+                if let url = csvFileURL {
+                    ShareSheet(items: [url])
+                }
+            }
         }
     }
 
@@ -468,4 +467,16 @@ private struct StatCard: View {
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
+}
+
+// MARK: - ShareSheet
+
+private struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

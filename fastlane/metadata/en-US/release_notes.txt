@@ -1,0 +1,14 @@
+What's new in version 1.0.1:
+
+- Name your timers: Give each timer a custom name
+- Statistics dashboard: Weekly summary, averages, streaks, and per-timer breakdown
+- Chart with time range selector (Week/Month/Year/All)
+- CSV export of your timer data
+- Progress ring for countdown timers
+- Haptic feedback on start, stop, and timer completion
+- Quick config via long press
+- Time presets (1, 5, 10, 15, 30 min)
+- Sound preview in settings
+- Swipe to delete individual log entries
+- Onboarding screen on first launch
+- Live Activity on the lock screen

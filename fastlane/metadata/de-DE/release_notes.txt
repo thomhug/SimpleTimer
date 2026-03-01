@@ -1,0 +1,14 @@
+Neues in Version 1.0.1:
+
+- Timer benennen: Gib jedem Timer einen eigenen Namen
+- Statistik-Dashboard: Wochenübersicht, Durchschnitt, Serie und Aufschlüsselung pro Timer
+- Diagramm mit Zeitraum-Auswahl (Woche/Monat/Jahr/Alle)
+- CSV-Export deiner Timer-Daten
+- Fortschrittsring bei Countdown-Timern
+- Haptisches Feedback beim Starten, Stoppen und Timer-Ende
+- Schnellkonfiguration per langem Druck
+- Zeitvoreinstellungen (1, 5, 10, 15, 30 Min)
+- Sound-Vorschau in den Einstellungen
+- Einzelne Log-Einträge per Wischen löschen
+- Einführungsbildschirm beim ersten Start
+- Live Activity auf dem Sperrbildschirm

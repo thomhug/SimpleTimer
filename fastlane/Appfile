@@ -1,0 +1,5 @@
+app_identifier("ch.simpletimer.app") # The bundle identifier of your app
+apple_id("apple@tom.li") # Your Apple Developer Portal username
+
+itc_team_id("128563457") # App Store Connect Team ID
+team_id("97M8QABMLM") # Developer Portal Team ID

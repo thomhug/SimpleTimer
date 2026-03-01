@@ -1,0 +1,31 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    build_app(scheme: "SimpleTimer")
+    upload_to_testflight
+  end
+
+  desc "Query Xcode Cloud build runs and their commits"
+  lane :query_builds do
+    require "spaceship"
+    Spaceship::ConnectAPI.login("apple@tom.li")
+
+    app = Spaceship::ConnectAPI::App.find("ch.simpletimer.app")
+    client = Spaceship::ConnectAPI.client.tunes_request_client
+
+    products_resp = client.get("v1/apps/#{app.id}/ciProducts", {"limit" => 10})
+    products_resp.body["data"].each do |p|
+      product_id = p["id"]
+      runs_resp = client.get("v1/ciProducts/#{product_id}/buildRuns", {"limit" => 10})
+      runs_resp.body["data"].each do |run|
+        attrs = run["attributes"]
+        build_num = attrs["number"]
+        commit = attrs.dig("sourceCommit", "commitSha")
+        message = attrs.dig("sourceCommit", "message")
+        UI.important("Build #{build_num}: #{commit ? commit[0..7] : 'no commit'} - #{message}")
+      end
+    end
+  end
+end

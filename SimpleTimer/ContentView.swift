@@ -62,49 +62,47 @@ struct TimerRow: View {
         HStack {
             Spacer()
 
-            VStack(spacing: 4) {
+            VStack(spacing: 6) {
                 Text(section.name)
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
-                ZStack {
-                    if !section.isStopwatch {
-                        Circle()
-                            .stroke(Color.accentColor.opacity(0.15), lineWidth: 6)
+                ZStack(alignment: .topTrailing) {
+                    Text(section.displayTime)
+                        .font(.system(size: 72, weight: .thin, design: .rounded))
+                        .foregroundStyle(section.isRunning ? .primary : .secondary)
+                        .contentTransition(.numericText())
 
+                    if section.loopEnabled && !section.isStopwatch {
+                        Image(systemName: "repeat")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .offset(x: 4, y: -2)
+                    }
+                }
+
+                if !section.isStopwatch {
+                    ZStack {
+                        Circle()
+                            .stroke(Color.accentColor.opacity(0.15), lineWidth: 4)
                         Circle()
                             .trim(from: 0, to: progress)
-                            .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                            .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 4, lineCap: .round))
                             .rotationEffect(.degrees(-90))
                             .animation(.linear(duration: 0.1), value: progress)
                     }
-
-                    ZStack(alignment: .topTrailing) {
-                        Text(section.displayTime)
-                            .font(.system(size: 72, weight: .thin, design: .rounded))
-                            .foregroundStyle(section.isRunning ? .primary : .secondary)
-                            .contentTransition(.numericText())
-
-                        if section.loopEnabled && !section.isStopwatch {
-                            Image(systemName: "repeat")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .offset(x: 4, y: -2)
-                        }
-                    }
-                    .padding(20)
+                    .frame(width: 32, height: 32)
                 }
-                .frame(width: 220, height: 220)
-                .onTapGesture {
-                    let generator = UIImpactFeedbackGenerator(style: .medium)
-                    generator.impactOccurred()
-                    withAnimation {
-                        section.toggle()
-                    }
+            }
+            .onTapGesture {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+                withAnimation {
+                    section.toggle()
                 }
-                .onLongPressGesture {
-                    showQuickConfig = true
-                }
+            }
+            .onLongPressGesture {
+                showQuickConfig = true
             }
 
             Spacer()

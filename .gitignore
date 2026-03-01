@@ -10,3 +10,7 @@ build/
 
 ## SwiftPM
 .build/
+
+## Local build state
+.local-build-count
+BuildNumber.xcconfig
