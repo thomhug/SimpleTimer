@@ -1,4 +1,5 @@
 import AVFoundation
+import UserNotifications
 
 enum SoundOption: String, CaseIterable, Identifiable {
     case alarm = "Alarm"
@@ -20,33 +21,33 @@ enum SoundOption: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    private var fileName: String {
+    var fileName: String {
         switch self {
         case .alarm: return "alarm"
-        case .anticipate: return "Anticipate.caf"
-        case .bloom: return "Bloom.caf"
-        case .calypso: return "Calypso.caf"
-        case .chime: return "Chime.caf"
-        case .glass: return "Glass.caf"
-        case .horn: return "Horn.caf"
-        case .ladder: return "Ladder.caf"
-        case .minuet: return "Minuet.caf"
-        case .noir: return "Noir.caf"
-        case .sherwood: return "Sherwood_Forest.caf"
-        case .spell: return "Spell.caf"
-        case .suspense: return "Suspense.caf"
-        case .telegraph: return "Telegraph.caf"
-        case .tiptoes: return "Tiptoes.caf"
-        case .triTone: return "tri-tone_new.caf"
+        case .anticipate: return "Anticipate"
+        case .bloom: return "Bloom"
+        case .calypso: return "Calypso"
+        case .chime: return "Choo_Choo"
+        case .glass: return "Fanfare"
+        case .horn: return "Descent"
+        case .ladder: return "Ladder"
+        case .minuet: return "Minuet"
+        case .noir: return "Noir"
+        case .sherwood: return "Sherwood_Forest"
+        case .spell: return "Spell"
+        case .suspense: return "Suspense"
+        case .telegraph: return "Telegraph"
+        case .tiptoes: return "Tiptoes"
+        case .triTone: return "News_Flash"
         }
     }
 
-    private var url: URL? {
-        if self == .alarm {
-            return Bundle.main.url(forResource: "alarm", withExtension: "caf")
-                ?? URL(fileURLWithPath: "/System/Library/Audio/UISounds/alarm.caf")
-        }
-        return URL(fileURLWithPath: "/System/Library/Audio/UISounds/\(fileName)")
+    var url: URL? {
+        Bundle.main.url(forResource: fileName, withExtension: "caf")
+    }
+
+    var notificationSound: UNNotificationSound {
+        UNNotificationSound(named: UNNotificationSoundName("\(fileName).caf"))
     }
 
     func play() {

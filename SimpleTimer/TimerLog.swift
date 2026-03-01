@@ -4,11 +4,21 @@ struct TimerLogEntry: Identifiable, Codable {
     let id: UUID
     let timestamp: Date
     let seconds: Int
+    let timerName: String
 
-    init(timestamp: Date, seconds: Int) {
+    init(timestamp: Date, seconds: Int, timerName: String = "Timer") {
         self.id = UUID()
         self.timestamp = timestamp
         self.seconds = seconds
+        self.timerName = timerName
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        timestamp = try container.decode(Date.self, forKey: .timestamp)
+        seconds = try container.decode(Int.self, forKey: .seconds)
+        timerName = try container.decodeIfPresent(String.self, forKey: .timerName) ?? "Timer"
     }
 }
 
@@ -28,8 +38,13 @@ final class TimerLog {
         }
     }
 
-    func log(seconds: Int) {
-        entries.insert(TimerLogEntry(timestamp: Date(), seconds: seconds), at: 0)
+    func log(seconds: Int, timerName: String = "Timer") {
+        entries.insert(TimerLogEntry(timestamp: Date(), seconds: seconds, timerName: timerName), at: 0)
+        save()
+    }
+
+    func delete(id: UUID) {
+        entries.removeAll { $0.id == id }
         save()
     }
 

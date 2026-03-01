@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     @State private var sections = [
@@ -50,33 +51,67 @@ struct ContentView: View {
 
 struct TimerRow: View {
     @Bindable var section: TimerSection
+    @State private var showQuickConfig = false
+
+    private var progress: CGFloat {
+        guard !section.isStopwatch, section.configuredSeconds > 0 else { return 0 }
+        return CGFloat(section.remainingSeconds) / CGFloat(section.configuredSeconds)
+    }
 
     var body: some View {
         HStack {
             Spacer()
 
-            ZStack(alignment: .topTrailing) {
-                Text(section.displayTime)
-                    .font(.system(size: 72, weight: .thin, design: .rounded))
-                    .foregroundStyle(section.isRunning ? .primary : .secondary)
-                    .contentTransition(.numericText())
-                    .onTapGesture {
-                        withAnimation {
-                            section.toggle()
-                        }
+            VStack(spacing: 4) {
+                Text(section.name)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                ZStack {
+                    if !section.isStopwatch {
+                        Circle()
+                            .stroke(Color.accentColor.opacity(0.15), lineWidth: 6)
+
+                        Circle()
+                            .trim(from: 0, to: progress)
+                            .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                            .animation(.linear(duration: 0.1), value: progress)
                     }
 
-                if section.loopEnabled && !section.isStopwatch {
-                    Image(systemName: "repeat")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .offset(x: 4, y: -2)
+                    ZStack(alignment: .topTrailing) {
+                        Text(section.displayTime)
+                            .font(.system(size: 72, weight: .thin, design: .rounded))
+                            .foregroundStyle(section.isRunning ? .primary : .secondary)
+                            .contentTransition(.numericText())
+
+                        if section.loopEnabled && !section.isStopwatch {
+                            Image(systemName: "repeat")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .offset(x: 4, y: -2)
+                        }
+                    }
+                    .padding(20)
+                }
+                .frame(width: 220, height: 220)
+                .onTapGesture {
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
+                    withAnimation {
+                        section.toggle()
+                    }
+                }
+                .onLongPressGesture {
+                    showQuickConfig = true
                 }
             }
 
             Spacer()
 
             Button {
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
                 withAnimation {
                     section.reset()
                 }
@@ -86,6 +121,81 @@ struct TimerRow: View {
                     .foregroundStyle(.secondary)
             }
             .padding(.trailing, 20)
+        }
+        .sheet(isPresented: $showQuickConfig) {
+            QuickConfigSheet(section: section)
+                .presentationDetents([.medium])
+        }
+    }
+}
+
+struct QuickConfigSheet: View {
+    @Bindable var section: TimerSection
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var selectedMinutes: Int = 0
+    @State private var selectedSeconds: Int = 0
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    HStack {
+                        Picker("Minutes", selection: $selectedMinutes) {
+                            ForEach(0..<60) { m in
+                                Text("\(m) min").tag(m)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 100)
+                        .clipped()
+
+                        Picker("Seconds", selection: $selectedSeconds) {
+                            ForEach(0..<60) { s in
+                                Text("\(s) sec").tag(s)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 100)
+                        .clipped()
+                    }
+                    .labelsHidden()
+                }
+
+                Section {
+                    Picker("Sound", selection: $section.selectedSound) {
+                        ForEach(SoundOption.allCases) { sound in
+                            Text(sound.rawValue).tag(sound)
+                        }
+                    }
+
+                    if !section.isStopwatch {
+                        Toggle("Loop", isOn: $section.loopEnabled)
+                    }
+                }
+            }
+            .navigationTitle(section.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") { dismiss() }
+                }
+            }
+            .onAppear {
+                selectedMinutes = section.configuredSeconds / 60
+                selectedSeconds = section.configuredSeconds % 60
+            }
+            .onChange(of: selectedMinutes) { updateConfigured() }
+            .onChange(of: selectedSeconds) { updateConfigured() }
+        }
+    }
+
+    private func updateConfigured() {
+        let total = selectedMinutes * 60 + selectedSeconds
+        if total != section.configuredSeconds {
+            section.configuredSeconds = total
         }
     }
 }

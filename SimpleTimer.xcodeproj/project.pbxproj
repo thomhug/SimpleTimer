@@ -17,6 +17,26 @@
 		B878A34C8AB0461350C8072C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A07F86FCEDBA80E957B5100 /* Assets.xcassets */; };
 		C1D2E3F4A5B60001DDCC0010 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60002DDCC0010 /* Localizable.xcstrings */; };
 		DCB2139D525B402EAEEE2B14 /* SimpleTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */; };
+		F1A2B3C4D5E6F7A8B9C0D2E1 /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E1 /* alarm.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E2 /* Anticipate.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E2 /* Anticipate.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E3 /* Bloom.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E3 /* Bloom.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E4 /* Calypso.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E4 /* Calypso.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E5 /* Choo_Choo.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E5 /* Choo_Choo.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E6 /* Descent.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E6 /* Descent.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E7 /* Fanfare.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E7 /* Fanfare.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E8 /* Ladder.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E8 /* Ladder.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2E9 /* Minuet.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E9 /* Minuet.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2EA /* News_Flash.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1EA /* News_Flash.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2EB /* Noir.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1EB /* Noir.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2EC /* Sherwood_Forest.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1EC /* Sherwood_Forest.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2ED /* Spell.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1ED /* Spell.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2EE /* Suspense.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1EE /* Suspense.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2EF /* Telegraph.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1EF /* Telegraph.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D2F0 /* Tiptoes.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1F0 /* Tiptoes.caf */; };
+		F1A2B3C4D5E6F7A8B9C0D4E2 /* TimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D4E1 /* TimerActivityAttributes.swift */; };
+		F1A2B3C4D5E6F7A8B9C0E003 /* TimerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0E002 /* TimerLiveActivity.swift */; };
+		F1A2B3C4D5E6F7A8B9C0E00F /* SimpleTimerWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0E001 /* SimpleTimerWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F1A2B3C4D5E6F7A8B9C0E010 /* TimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D4E1 /* TimerActivityAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +47,28 @@
 			remoteGlobalIDString = 76FB540336FA83FA1D80C06F;
 			remoteInfo = SimpleTimer;
 		};
+		F1A2B3C4D5E6F7A8B9C0E00C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1796F758820ECC507D91C41F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1A2B3C4D5E6F7A8B9C0E004;
+			remoteInfo = SimpleTimerWidgets;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F1A2B3C4D5E6F7A8B9C0E00E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F1A2B3C4D5E6F7A8B9C0E00F /* SimpleTimerWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0EC9F8854F9A3DE70755290C /* TimerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSection.swift; sourceTree = "<group>"; };
@@ -42,10 +83,37 @@
 		AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerApp.swift; sourceTree = "<group>"; };
 		C1D2E3F4A5B60002DDCC0010 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D7B5DF07F5FA722EC839DD58 /* SimpleTimer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SimpleTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A2B3C4D5E6F7A8B9C0D1E1 /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E2 /* Anticipate.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anticipate.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E3 /* Bloom.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bloom.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E4 /* Calypso.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calypso.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E5 /* Choo_Choo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Choo_Choo.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E6 /* Descent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Descent.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E7 /* Fanfare.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fanfare.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E8 /* Ladder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ladder.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E9 /* Minuet.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minuet.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1EA /* News_Flash.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = News_Flash.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1EB /* Noir.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noir.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1EC /* Sherwood_Forest.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sherwood_Forest.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1ED /* Spell.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spell.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1EE /* Suspense.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Suspense.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1EF /* Telegraph.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Telegraph.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1F0 /* Tiptoes.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tiptoes.caf; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D4E1 /* TimerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivityAttributes.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0E001 /* SimpleTimerWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimpleTimerWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A2B3C4D5E6F7A8B9C0E002 /* TimerLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLiveActivity.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0E011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AACC000100010009AACC0009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2B3C4D5E6F7A8B9C0E007 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				ECBEBAB21B0EAD3717A1FBBE /* SimpleTimer */,
+				F1A2B3C4D5E6F7A8B9C0E00B /* SimpleTimerWidgets */,
 				AACC000100010004AACC0004 /* SimpleTimerUITests */,
 				ED46ED04A93B59FB3E74A690 /* Products */,
 			);
@@ -82,6 +151,8 @@
 				6A3B93FD2B9B477B268D5211 /* SettingsView.swift */,
 				AC12012C7DBCB7EDFB4C768F /* SimpleTimerApp.swift */,
 				A1B2C3D4E5F60002AABB0002 /* SoundOption.swift */,
+				F1A2B3C4D5E6F7A8B9C0D3E1 /* Sounds */,
+				F1A2B3C4D5E6F7A8B9C0D4E1 /* TimerActivityAttributes.swift */,
 				0EC9F8854F9A3DE70755290C /* TimerSection.swift */,
 				A1B2C3D4E5F60002AABB0001 /* TimerLog.swift */,
 			);
@@ -93,8 +164,41 @@
 			children = (
 				D7B5DF07F5FA722EC839DD58 /* SimpleTimer.app */,
 				AACC000100010003AACC0003 /* SimpleTimerUITests.xctest */,
+				F1A2B3C4D5E6F7A8B9C0E001 /* SimpleTimerWidgets.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F1A2B3C4D5E6F7A8B9C0D3E1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2B3C4D5E6F7A8B9C0D1E1 /* alarm.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E2 /* Anticipate.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E3 /* Bloom.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E4 /* Calypso.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E5 /* Choo_Choo.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E6 /* Descent.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E7 /* Fanfare.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E8 /* Ladder.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1E9 /* Minuet.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1EA /* News_Flash.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1EB /* Noir.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1EC /* Sherwood_Forest.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1ED /* Spell.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1EE /* Suspense.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1EF /* Telegraph.caf */,
+				F1A2B3C4D5E6F7A8B9C0D1F0 /* Tiptoes.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		F1A2B3C4D5E6F7A8B9C0E00B /* SimpleTimerWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2B3C4D5E6F7A8B9C0E002 /* TimerLiveActivity.swift */,
+				F1A2B3C4D5E6F7A8B9C0E011 /* Info.plist */,
+			);
+			path = SimpleTimerWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,10 +210,12 @@
 			buildPhases = (
 				8DE814E0DFF6F1C5CDC3D085 /* Sources */,
 				CB00B06C048B8A2E89304BDA /* Resources */,
+				F1A2B3C4D5E6F7A8B9C0E00E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F1A2B3C4D5E6F7A8B9C0E00D /* PBXTargetDependency */,
 			);
 			name = SimpleTimer;
 			packageProductDependencies = (
@@ -136,6 +242,23 @@
 			productReference = AACC000100010003AACC0003 /* SimpleTimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		F1A2B3C4D5E6F7A8B9C0E004 /* SimpleTimerWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A2B3C4D5E6F7A8B9C0E008 /* Build configuration list for PBXNativeTarget "SimpleTimerWidgets" */;
+			buildPhases = (
+				F1A2B3C4D5E6F7A8B9C0E005 /* Sources */,
+				F1A2B3C4D5E6F7A8B9C0E006 /* Resources */,
+				F1A2B3C4D5E6F7A8B9C0E007 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleTimerWidgets;
+			productName = SimpleTimerWidgets;
+			productReference = F1A2B3C4D5E6F7A8B9C0E001 /* SimpleTimerWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +274,9 @@
 					AACC000100010007AACC0007 = {
 						DevelopmentTeam = 97M8QABMLM;
 						TestTargetID = 76FB540336FA83FA1D80C06F;
+					};
+					F1A2B3C4D5E6F7A8B9C0E004 = {
+						DevelopmentTeam = 97M8QABMLM;
 					};
 				};
 			};
@@ -170,6 +296,7 @@
 			projectRoot = "";
 			targets = (
 				76FB540336FA83FA1D80C06F /* SimpleTimer */,
+				F1A2B3C4D5E6F7A8B9C0E004 /* SimpleTimerWidgets */,
 				AACC000100010007AACC0007 /* SimpleTimerUITests */,
 			);
 		};
@@ -189,6 +316,29 @@
 			files = (
 				B878A34C8AB0461350C8072C /* Assets.xcassets in Resources */,
 				C1D2E3F4A5B60001DDCC0010 /* Localizable.xcstrings in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E1 /* alarm.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E2 /* Anticipate.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E3 /* Bloom.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E4 /* Calypso.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E5 /* Choo_Choo.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E6 /* Descent.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E7 /* Fanfare.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E8 /* Ladder.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2E9 /* Minuet.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2EA /* News_Flash.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2EB /* Noir.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2EC /* Sherwood_Forest.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2ED /* Spell.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2EE /* Suspense.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2EF /* Telegraph.caf in Resources */,
+				F1A2B3C4D5E6F7A8B9C0D2F0 /* Tiptoes.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2B3C4D5E6F7A8B9C0E006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +356,7 @@
 				A1B2C3D4E5F60001AABB0002 /* SoundOption.swift in Sources */,
 				B727C0CB87444A68276C1640 /* TimerSection.swift in Sources */,
 				A1B2C3D4E5F60001AABB0001 /* TimerLog.swift in Sources */,
+				F1A2B3C4D5E6F7A8B9C0D4E2 /* TimerActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +368,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A2B3C4D5E6F7A8B9C0E005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2B3C4D5E6F7A8B9C0E003 /* TimerLiveActivity.swift in Sources */,
+				F1A2B3C4D5E6F7A8B9C0E010 /* TimerActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -224,6 +384,11 @@
 			isa = PBXTargetDependency;
 			target = 76FB540336FA83FA1D80C06F /* SimpleTimer */;
 			targetProxy = AACC000100010005AACC0005 /* PBXContainerItemProxy */;
+		};
+		F1A2B3C4D5E6F7A8B9C0E00D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1A2B3C4D5E6F7A8B9C0E004 /* SimpleTimerWidgets */;
+			targetProxy = F1A2B3C4D5E6F7A8B9C0E00C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -357,6 +522,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "SimpleTimer+";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -382,6 +548,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "SimpleTimer+";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -429,6 +596,56 @@
 			};
 			name = Release;
 		};
+		F1A2B3C4D5E6F7A8B9C0E009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97M8QABMLM;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleTimerWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimpleTimerWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1A2B3C4D5E6F7A8B9C0E00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97M8QABMLM;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleTimerWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimpleTimerWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +672,15 @@
 			buildConfigurations = (
 				9A29D847667607459FA490FC /* Debug */,
 				663A9DFFC4C9AC39B51966DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F1A2B3C4D5E6F7A8B9C0E008 /* Build configuration list for PBXNativeTarget "SimpleTimerWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A2B3C4D5E6F7A8B9C0E009 /* Debug */,
+				F1A2B3C4D5E6F7A8B9C0E00A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

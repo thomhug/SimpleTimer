@@ -9,22 +9,7 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 ForEach(sections) { section in
-                    Section("Timer \(section.id + 1)") {
-                        TimerConfigRow(section: section)
-
-                        Picker("Sound", selection: Bindable(section).selectedSound) {
-                            ForEach(SoundOption.allCases) { sound in
-                                Text(sound.rawValue).tag(sound)
-                            }
-                        }
-                        .onChange(of: section.selectedSound) {
-                            section.selectedSound.play()
-                        }
-
-                        if !section.isStopwatch {
-                            Toggle("Loop", isOn: Bindable(section).loopEnabled)
-                        }
-                    }
+                    TimerSettingsSection(section: section)
                 }
 
                 Section("Appearance") {
@@ -65,11 +50,51 @@ extension Bundle {
     }
 }
 
+struct TimerSettingsSection: View {
+    @Bindable var section: TimerSection
+
+    var body: some View {
+        Section(section.name) {
+            TextField("Name", text: $section.name)
+
+            TimerConfigRow(section: section)
+
+            HStack {
+                Picker("Sound", selection: $section.selectedSound) {
+                    ForEach(SoundOption.allCases) { sound in
+                        Text(sound.rawValue).tag(sound)
+                    }
+                }
+
+                Button {
+                    section.selectedSound.play()
+                } label: {
+                    Image(systemName: "speaker.wave.2")
+                        .foregroundStyle(Color.accentColor)
+                }
+                .buttonStyle(.borderless)
+            }
+
+            if !section.isStopwatch {
+                Toggle("Loop", isOn: $section.loopEnabled)
+            }
+        }
+    }
+}
+
 struct TimerConfigRow: View {
     @Bindable var section: TimerSection
 
     @State private var selectedMinutes: Int = 0
     @State private var selectedSeconds: Int = 0
+
+    private let presets: [(String, Int)] = [
+        ("1", 60),
+        ("5", 300),
+        ("10", 600),
+        ("15", 900),
+        ("30", 1800)
+    ]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -101,6 +126,33 @@ struct TimerConfigRow: View {
                 .clipped()
             }
             .labelsHidden()
+
+            HStack(spacing: 8) {
+                ForEach(presets, id: \.1) { label, totalSeconds in
+                    Button {
+                        selectedMinutes = totalSeconds / 60
+                        selectedSeconds = totalSeconds % 60
+                    } label: {
+                        Text("\(label) min")
+                            .font(.caption)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(
+                                section.configuredSeconds == totalSeconds
+                                    ? Color.accentColor
+                                    : Color(.systemGray5)
+                            )
+                            .foregroundStyle(
+                                section.configuredSeconds == totalSeconds
+                                    ? .white
+                                    : .primary
+                            )
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .frame(maxWidth: .infinity)
         }
         .onAppear {
             selectedMinutes = section.configuredSeconds / 60

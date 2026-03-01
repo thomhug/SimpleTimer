@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Tage"
+          }
+        }
+      }
+    },
     "%lld min" : {
       "localizations" : {
         "de" : {
@@ -21,12 +31,42 @@
         }
       }
     },
+    "%lld sessions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Sitzungen"
+          }
+        }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        }
+      }
+    },
     "Appearance" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Darstellung"
+          }
+        }
+      }
+    },
+    "Average" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchschnitt"
           }
         }
       }
@@ -61,6 +101,16 @@
         }
       }
     },
+    "Delete All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle löschen"
+          }
+        }
+      }
+    },
     "Delete log?" : {
       "localizations" : {
         "de" : {
@@ -77,6 +127,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fertig"
+          }
+        }
+      }
+    },
+    "Export CSV" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSV exportieren"
+          }
+        }
+      }
+    },
+    "Got it" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verstanden"
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf"
           }
         }
       }
@@ -101,12 +181,72 @@
         }
       }
     },
+    "Long-press to configure" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lange drücken zum Konfigurieren"
+          }
+        }
+      }
+    },
+    "Longest: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Längste: %@"
+          }
+        }
+      }
+    },
     "Loop" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Endlosschleife"
+          }
+        }
+      }
+    },
+    "Minutes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuten"
+          }
+        }
+      }
+    },
+    "Month" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monat"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "No data for this period" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Daten für diesen Zeitraum"
           }
         }
       }
@@ -121,6 +261,36 @@
         }
       }
     },
+    "Per Timer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Timer"
+          }
+        }
+      }
+    },
+    "Sessions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sitzungen"
+          }
+        }
+      }
+    },
+    "Set to 0:00 for stopwatch mode" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf 0:00 setzen für Stoppuhr-Modus"
+          }
+        }
+      }
+    },
     "Settings" : {
       "localizations" : {
         "de" : {
@@ -130,6 +300,19 @@
           }
         }
       }
+    },
+    "Shortest: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kürzeste: %@"
+          }
+        }
+      }
+    },
+    "SimpleTimer" : {
+
     },
     "Sound" : {
       "localizations" : {
@@ -151,12 +334,42 @@
         }
       }
     },
+    "Streak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serie"
+          }
+        }
+      }
+    },
     "System" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "System"
+          }
+        }
+      }
+    },
+    "Tap to start/stop" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen zum Starten/Stoppen"
+          }
+        }
+      }
+    },
+    "This Week" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Woche"
           }
         }
       }
@@ -171,6 +384,36 @@
         }
       }
     },
+    "Timer 1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer 1"
+          }
+        }
+      }
+    },
+    "Timer 2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer 2"
+          }
+        }
+      }
+    },
+    "Timer 3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer 3"
+          }
+        }
+      }
+    },
     "Timer events will appear here." : {
       "localizations" : {
         "de" : {
@@ -181,12 +424,32 @@
         }
       }
     },
-    "Total" : {
+    "Timer finished" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesamt"
+            "value" : "Timer abgelaufen"
+          }
+        }
+      }
+    },
+    "Week" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woche"
+          }
+        }
+      }
+    },
+    "Year" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahr"
           }
         }
       }
