@@ -6,7 +6,7 @@
 ## Entwicklungsumgebung
 - Xcode **15.4** (Build 15F31d)
 - iOS Deployment Target: 17.0
-- Bundle ID: `ch.simpletimer.app`
+- Bundle ID, Apple ID, Team IDs: siehe `.env`
 
 ## Workflow
 - Nach jeder Aenderung: **committen, pushen, dann auf iPhone deployen**
@@ -26,12 +26,7 @@
 ### Abfragen
 - **Aktuelle App Store Build-Nummer**: `fastlane run app_store_build_number live:true`
 - **Aktuellen TestFlight Build**: `fastlane run latest_testflight_build_number`
-- **Commit eines Xcode Cloud Builds finden**: CI Product ID ist `E41A2043-BABB-48FC-9E19-E5DF3B14567C`. Build Runs abfragen mit `fastlane query_builds` oder direkt via Spaceship:
-  ```ruby
-  client = Spaceship::ConnectAPI.client.tunes_request_client
-  runs = client.get("v1/ciProducts/E41A2043-BABB-48FC-9E19-E5DF3B14567C/buildRuns", {"limit" => 50})
-  # Jeder Run hat attrs["sourceCommit"]["commitSha"]
-  ```
+- **Xcode Cloud Builds abfragen**: `ruby scripts/query-builds.rb [limit]` (CI Product ID aus `.env`)
 
 ### Release-Vorgang (App Store)
 1. **Build in Xcode Cloud starten** (oder `fastlane beta` fuer lokalen Upload)

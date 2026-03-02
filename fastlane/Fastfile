@@ -1,3 +1,6 @@
+require "dotenv"
+Dotenv.load(File.expand_path("../../.env", __dir__))
+
 default_platform(:ios)
 
 platform :ios do
@@ -10,9 +13,9 @@ platform :ios do
   desc "Query Xcode Cloud build runs and their commits"
   lane :query_builds do
     require "spaceship"
-    Spaceship::ConnectAPI.login("apple@tom.li")
+    Spaceship::ConnectAPI.login(ENV.fetch("APPLE_ID"))
 
-    app = Spaceship::ConnectAPI::App.find("ch.simpletimer.app")
+    app = Spaceship::ConnectAPI::App.find(ENV.fetch("APP_IDENTIFIER"))
     client = Spaceship::ConnectAPI.client.tunes_request_client
 
     products_resp = client.get("v1/apps/#{app.id}/ciProducts", {"limit" => 10})
