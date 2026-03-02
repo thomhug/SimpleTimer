@@ -376,8 +376,20 @@ struct LogView: View {
             }
         }
         .chartXAxis {
-            AxisMarks(values: .stride(by: .day)) { _ in
-                AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+            if selectedRange == .week {
+                AxisMarks(values: .stride(by: .day)) { _ in
+                    AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+                }
+            } else if selectedRange == .month {
+                AxisMarks(values: .stride(by: .day, count: 5)) { _ in
+                    AxisGridLine()
+                    AxisValueLabel(format: .dateTime.day(), centered: true)
+                }
+            } else {
+                AxisMarks(values: .stride(by: .month)) { _ in
+                    AxisGridLine()
+                    AxisValueLabel(format: .dateTime.month(.abbreviated), centered: true)
+                }
             }
         }
         .chartOverlay { proxy in
