@@ -1,0 +1,1 @@
+Drei Timer auf einem Bildschirm. In Sekunden eingerichtet, Alarmton auswählen und los.

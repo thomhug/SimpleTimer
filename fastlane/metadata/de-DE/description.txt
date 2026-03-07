@@ -1,0 +1,13 @@
+SimpleTimer+ bietet drei unabhängige Timer auf einem einzigen Bildschirm – keine Tabs, kein Durcheinander, keine Einrichtung.
+
+Jeder Timer kann als Countdown oder als Stoppuhr verwendet werden. Stelle Minuten und Sekunden mit dem Drehrad ein, wähle aus 16 integrierten Alarmtönen und aktiviere den Loop-Modus für automatischen Neustart.
+
+Funktionen:
+- 3 unabhängige Timer auf einem Bildschirm
+- Countdown- oder Stoppuhr-Modus pro Timer
+- Drehrad für schnelle Zeiteinstellung
+- 16 wählbare iOS-Alarmtöne
+- Loop-Modus – automatischer Neustart nach Ablauf
+- Timer-Protokoll mit Zeitstempel und Gesamtzeit
+- Helles, dunkles oder System-Erscheinungsbild
+- Unterstützt Englisch und Deutsch

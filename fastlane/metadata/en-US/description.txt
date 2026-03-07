@@ -1,0 +1,13 @@
+SimpleTimer+ gives you three independent timers on a single screen - no tabs, no clutter, no setup.
+
+Each timer can be set as a countdown or used as a stopwatch. Pick your minutes and seconds with the wheel picker, choose from 16 built-in alarm sounds, and enable loop mode to restart automatically.
+
+Features:
+- 3 independent timers on one screen
+- Countdown or stopwatch mode per timer
+- Wheel picker for quick time selection
+- 16 selectable iOS alarm sounds
+- Loop mode - auto-restart when finished
+- Timer log with timestamps and total time
+- Light, Dark, or System appearance
+- Supports English and German
