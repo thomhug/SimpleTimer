@@ -120,37 +120,50 @@ struct LogView: View {
 
     // MARK: - Chart data
 
-    private var chartSegments: [BarSegment] {
+    private var useWeeklyAggregation: Bool {
+        selectedRange == .year || selectedRange == .all
+    }
+
+    private func bucketDate(for date: Date) -> Date {
         let calendar = Calendar.current
+        if useWeeklyAggregation {
+            // Start of ISO week (Monday)
+            let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
+            return calendar.date(from: components) ?? calendar.startOfDay(for: date)
+        } else {
+            return calendar.startOfDay(for: date)
+        }
+    }
+
+    private var chartSegments: [BarSegment] {
         let grouped = Dictionary(grouping: filteredEntries) { entry -> Date in
-            calendar.startOfDay(for: entry.timestamp)
+            bucketDate(for: entry.timestamp)
         }
         var segments: [BarSegment] = []
-        for (day, entries) in grouped {
+        for (bucket, entries) in grouped {
             let byTimer = Dictionary(grouping: entries) { $0.timerName }
             for (name, timerEntries) in byTimer {
                 let total = timerEntries.reduce(0) { $0 + $1.seconds }
-                segments.append(BarSegment(date: day, timerName: name, minutes: Double(total) / 60.0))
+                segments.append(BarSegment(date: bucket, timerName: name, minutes: Double(total) / 60.0))
             }
         }
         return segments.sorted { $0.date < $1.date }
     }
 
     private var trendPoints: [TrendPoint] {
-        let calendar = Calendar.current
         let grouped = Dictionary(grouping: filteredEntries) { entry -> Date in
-            calendar.startOfDay(for: entry.timestamp)
+            bucketDate(for: entry.timestamp)
         }
-        let dailyTotals = grouped.map { day, entries in
-            (day, entries.reduce(0) { $0 + $1.seconds })
+        let bucketTotals = grouped.map { bucket, entries in
+            (bucket, entries.reduce(0) { $0 + $1.seconds })
         }.sorted { $0.0 < $1.0 }
 
-        guard dailyTotals.count >= 3 else { return [] }
+        guard bucketTotals.count >= 3 else { return [] }
 
         var points: [TrendPoint] = []
-        for i in 2..<dailyTotals.count {
-            let avg = Double(dailyTotals[i-2].1 + dailyTotals[i-1].1 + dailyTotals[i].1) / 3.0 / 60.0
-            points.append(TrendPoint(id: dailyTotals[i].0, minutes: avg))
+        for i in 2..<bucketTotals.count {
+            let avg = Double(bucketTotals[i-2].1 + bucketTotals[i-1].1 + bucketTotals[i].1) / 3.0 / 60.0
+            points.append(TrendPoint(id: bucketTotals[i].0, minutes: avg))
         }
         return points
     }
@@ -355,11 +368,15 @@ struct LogView: View {
 
     // MARK: - Chart view
 
+    private var chartUnit: Calendar.Component {
+        useWeeklyAggregation ? .weekOfYear : .day
+    }
+
     private var chartView: some View {
         Chart {
             ForEach(chartSegments) { segment in
                 BarMark(
-                    x: .value("Day", segment.date, unit: .day),
+                    x: .value("Day", segment.date, unit: chartUnit),
                     y: .value("Minutes", segment.minutes)
                 )
                 .foregroundStyle(by: .value("Timer", segment.timerName))
@@ -367,7 +384,7 @@ struct LogView: View {
 
             ForEach(trendPoints) { point in
                 LineMark(
-                    x: .value("Day", point.id, unit: .day),
+                    x: .value("Day", point.id, unit: chartUnit),
                     y: .value("Trend", point.minutes)
                 )
                 .foregroundStyle(.gray.opacity(0.6))

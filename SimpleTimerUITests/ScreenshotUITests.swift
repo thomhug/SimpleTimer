@@ -6,35 +6,37 @@ final class ScreenshotUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app.launch()
+        // Dismiss notification dialog if present
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allowButton = springboard.buttons["Allow"]
+        if allowButton.waitForExistence(timeout: 3) {
+            allowButton.tap()
+        }
     }
 
-    func testTakeAppStoreScreenshots() throws {
-        // 1: Home screen (timers)
+    func testScreenshots() throws {
         sleep(1)
+
+        // 1: Home screen (timers)
         takeScreenshot(named: "01_timers")
 
-        // 2: Settings
-        app.buttons["settings-button"].tap()
-        sleep(1)
-        takeScreenshot(named: "02_settings")
-
-        // Dismiss settings
-        app.buttons["Done"].tap()
-        sleep(1)
-
-        // 3: Log
+        // 2: Log view with statistics
         app.buttons["log-button"].tap()
         sleep(1)
-        takeScreenshot(named: "03_log")
+        takeScreenshot(named: "02_log")
 
         // Dismiss log
         app.buttons["Done"].tap()
         sleep(1)
-    }
 
-    func testTakeAppStoreScreenshotsDark() throws {
+        // 3: Settings
+        app.buttons["settings-button"].tap()
         sleep(1)
-        takeScreenshot(named: "04_timers_dark")
+        takeScreenshot(named: "03_settings")
+
+        // Dismiss settings
+        app.buttons["Done"].tap()
+        sleep(1)
     }
 
     private func takeScreenshot(named name: String) {
