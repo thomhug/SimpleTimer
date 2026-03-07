@@ -46,6 +46,17 @@
    - `.local-build-count` loeschen (reset)
    - Committen und pushen
 
+## App Store Screenshots
+- **Skript**: `./scripts/take-screenshots.sh` (komplett automatisiert)
+- **Simulatoren**:
+  - iPhone 14 Plus → **1284x2778** (App Store 6.7" Slot, NICHT iPhone 15 Pro Max!)
+  - iPad Pro 13" (M4) → **2064x2752** (App Store 12.9" Slot)
+- **Ablauf**: Seed → Notification-Dialog akzeptieren → Dark + Light Screenshots via UI-Tests
+- **Output**: `appstore/screenshots/iphone/` und `appstore/screenshots/ipad/`
+- **Benennung**: `01_timers` (light), `02_settings` (dark), `03_log` (dark), `04_timers_dark`
+- **UI-Tests**: `SimpleTimerUITests/ScreenshotUITests.swift`
+- **Wichtig**: App Store akzeptiert 1290x2796 (iPhone 15 Pro Max) NICHT fuer den 6.7" Slot
+
 ## Projektstruktur
 - 3 Timer-Sektionen (konfigurierbar, mit benutzerdefinierten Namen)
 - Timer-Modus (Countdown) und Stoppuhr-Modus (wenn auf 0:00 gesetzt)

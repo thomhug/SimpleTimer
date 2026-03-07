@@ -3,13 +3,13 @@
 #
 # Usage: ./scripts/seed-simulator.sh [SIMULATOR_UDID]
 #
-# Default: iPhone 13 Pro Max (1284x2778 — App Store screenshot size)
+# Default: iPhone 14 Plus (1284x2778 — App Store screenshot size)
 # The script builds the app, installs it, injects demo data, and launches it.
 
 set -e
 cd "$(dirname "$0")/.."
 
-UDID="${1:-5A1672A3-B8F4-40F3-B90A-1CB5A61334A6}"
+UDID="${1:-73C24A1C-B458-4679-8BC7-5AA8CA949B71}"
 BUNDLE_ID="ch.simpletimer.app"
 
 echo "==> Generating demo data..."
