@@ -14,12 +14,16 @@
 - Deploy-Target:
   - iPhone von Tom: `00008130-0004446200698D3A`
 
-## Build-Nummern
-- **Lokal**: `{TF+1}.{counter}` (z.B. `1.1`, `1.2`) — in der App als "Local" markiert
-- **Xcode Cloud**: Nutzt eigenen Auto-Increment-Counter
-- `.testflight-build-number` — letzte bekannte TF/Xcode-Cloud Build-Nummer (git-tracked, manuell aktualisieren nach TF-Upload)
+### Build-Nummern & TestFlight
+- **Nach jedem `git push`**: TestFlight-Nummer abfragen und ausgeben:
+  ```
+  fastlane run latest_testflight_build_number app_identifier:"ch.simpletimer.app" 2>&1 | grep -E "Latest|Result"
+  ```
+  Ausgabe z.B.: `Aktuelle TestFlight-Version: Build 4 → naechster Upload waere Build 5`
+- Lokale Builds: `{TF+1}.{counter}` Format (z.B. `5.1`, `5.2`) — wird von `build-and-deploy.sh` automatisch gesetzt
+- `.testflight-build-number` enthaelt die letzte bekannte TF-Build-Nummer (nach TF-Upload aktualisieren)
 - `.local-build-count` — lokaler Zaehler (git-ignored)
-- **Wichtig**: Vor dem Setzen von `.testflight-build-number` immer pruefen: `fastlane run latest_testflight_build_number`
+- In der App wird "Local" angezeigt wenn Build-Nummer einen Punkt enthaelt
 
 ## Fastlane
 
