@@ -527,7 +527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
@@ -554,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
@@ -570,7 +570,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97M8QABMLM;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.uitests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
@@ -587,7 +587,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97M8QABMLM;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.uitests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
@@ -612,7 +612,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.widgets;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -638,7 +638,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.simpletimer.app.widgets;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
